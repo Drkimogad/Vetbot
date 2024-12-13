@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VetBot</title>
+    <style>
+        /* Page Styling */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Chatbot Container */
+        #chatbot {
+            width: 66%; /* 2/3 of the page */
+            max-width: 800px;
+            height: 70%;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Chatbot Header */
+        #chatbot-header {
+            background-color: #0078D7;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        /* Chat Window */
+        #chatbot-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        /* Input Area */
+        #chatbot-input {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+            background-color: #f4f4f4;
+        }
+        #chatbot-input input {
+            flex: 1;
+            padding: 10px;
+            font-size: 1.2em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        #chatbot-input button {
+            background-color: #0078D7;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            #chatbot {
+                width: 90%;
+                height: 80%;
+            }
+            #chatbot-header {
+                font-size: 1.2em;
+            }
+            #chatbot-input input,
+            #chatbot-input button {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="chatbot">
+        <div id="chatbot-header">VetBot - Your Companion in Veterinary Care</div>
+        <div id="chatbot-messages"></div>
+        <div id="chatbot-input">
+            <input type="text" id="userInput" placeholder="Type your question..." />
+            <button onclick="processInput()">Send</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
