@@ -12,6 +12,7 @@
             bottom: 20px;
             right: 20px;
             width: 300px;
+            max-width: 90%; /* Responsive adjustment */
             background: #f4f4f4;
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -50,6 +51,22 @@
             border-radius: 5px;
             cursor: pointer;
         }
+        /* Responsive design for smaller screens */
+        @media (max-width: 768px) {
+            #chatbot {
+                width: 90%;
+                bottom: 10px;
+                right: 5%;
+            }
+            #chatbot-input input {
+                padding: 4px;
+                font-size: 14px;
+            }
+            #chatbot-input button {
+                padding: 4px 8px;
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -61,39 +78,6 @@
             <button onclick="processInput()">Send</button>
         </div>
     </div>
-
-    <script>
-        const messages = document.getElementById('chatbot-messages');
-
-        function addMessage(sender, text) {
-            const message = document.createElement('div');
-            message.textContent = `${sender}: ${text}`;
-            message.style.margin = '5px 0';
-            messages.appendChild(message);
-            messages.scrollTop = messages.scrollHeight;
-        }
-
-        function processInput() {
-            const userInput = document.getElementById('userInput').value.trim();
-            if (!userInput) return;
-
-            addMessage('You', userInput);
-            document.getElementById('userInput').value = '';
-
-            // Simulated responses
-            let response = '';
-            if (userInput.toLowerCase().includes('vaccination')) {
-                response = 'Vaccines are vital for your pet’s health. Here’s a guide: [Link].';
-            } else if (userInput.toLowerCase().includes('business tips')) {
-                response = 'Consider using social media and local partnerships to grow your client base.';
-            } else if (userInput.toLowerCase().includes('grooming')) {
-                response = 'Grooming depends on the pet’s breed. Long-haired pets may need weekly grooming.';
-            } else {
-                response = 'I’m not sure about that. Check out our blog for more tips: [Link].';
-            }
-
-            addMessage('VetBot', response);
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
