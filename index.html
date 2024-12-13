@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VetBot</title>
+    <style>
+        /* Simple styles for the chatbot */
+        #chatbot {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 300px;
+            background: #f4f4f4;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            font-family: Arial, sans-serif;
+        }
+        #chatbot-header {
+            background: #0078D7;
+            color: #fff;
+            padding: 10px;
+            border-radius: 10px 10px 0 0;
+            text-align: center;
+            font-weight: bold;
+        }
+        #chatbot-messages {
+            padding: 10px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        #chatbot-input {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #ccc;
+        }
+        #chatbot-input input {
+            flex: 1;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        #chatbot-input button {
+            margin-left: 5px;
+            background: #0078D7;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="chatbot">
+        <div id="chatbot-header">VetBot</div>
+        <div id="chatbot-messages"></div>
+        <div id="chatbot-input">
+            <input type="text" id="userInput" placeholder="Type your question...">
+            <button onclick="processInput()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        const messages = document.getElementById('chatbot-messages');
+
+        function addMessage(sender, text) {
+            const message = document.createElement('div');
+            message.textContent = `${sender}: ${text}`;
+            message.style.margin = '5px 0';
+            messages.appendChild(message);
+            messages.scrollTop = messages.scrollHeight;
+        }
+
+        function processInput() {
+            const userInput = document.getElementById('userInput').value.trim();
+            if (!userInput) return;
+
+            addMessage('You', userInput);
+            document.getElementById('userInput').value = '';
+
+            // Simulated responses
+            let response = '';
+            if (userInput.toLowerCase().includes('vaccination')) {
+                response = 'Vaccines are vital for your pet’s health. Here’s a guide: [Link].';
+            } else if (userInput.toLowerCase().includes('business tips')) {
+                response = 'Consider using social media and local partnerships to grow your client base.';
+            } else if (userInput.toLowerCase().includes('grooming')) {
+                response = 'Grooming depends on the pet’s breed. Long-haired pets may need weekly grooming.';
+            } else {
+                response = 'I’m not sure about that. Check out our blog for more tips: [Link].';
+            }
+
+            addMessage('VetBot', response);
+        }
+    </script>
+</body>
+</html>
